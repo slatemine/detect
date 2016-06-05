@@ -1,0 +1,46 @@
+# Maxmind database this should point to where
+# you have the databases installed
+geoip:
+  db:
+    city: ./var/GeoIP2-City.mmdb
+    isp: ./var/GeoIP2-ISP.mmdb
+
+nab:
+  root: ../NAB
+
+
+work:
+  - name: daily_flat_middle
+    data: $nab_root/data/artificialWithAnomaly/art_daily_flatmiddle.csv
+    analysis:
+       method: detect
+  - name: daily_jumps_down
+    data: $nab_root/data/artificialWithAnomaly/art_daily_jumpsdown.csv
+    analysis:
+       method: plot_csv
+  - name: daily_jumps_up
+    data: $nab_root/data/artificialWithAnomaly/art_daily_jumpsup.csv
+    analysis:
+       method: plot_csv
+  - name: daily_no_nump
+    data: $nab_root/data/artificialWithAnomaly/art_daily_nojump.csv
+    analysis:
+       method: plot_csv
+  - name: increase_spike_density
+    data: $nab_root/data/artificialWithAnomaly/art_increase_spike_density.csv
+    analysis:
+       method: plot_csv
+  - name: load_balancer_spikes
+    data: $nab_root/data/artificialWithAnomaly/art_load_balancer_spikes.csv
+    analysis:
+       method: plot_csv
+
+defaults:
+  logging:
+    level: INFO
+    format: '%(asctime)-15s %(levelname)-5s %(name)s : %(message)s'
+  job:
+     name: no_job_name
+     analysis:
+        method: plot_csv
+        results: results
