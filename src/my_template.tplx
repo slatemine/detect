@@ -1,0 +1,10 @@
+((*- extends 'article.tplx' -*))
+
+((* block author *))
+\author{Peter Tillotson}
+((* endblock author *))
+
+((* block title *))
+\title{Anomaly Detection}
+((* endblock title *))
+
